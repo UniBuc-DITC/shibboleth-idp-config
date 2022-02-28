@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+
+       default-init-method="initialize"
+       default-destroy-method="destroy">
+
+    <!-- ========================= Java Subject -> Principal Mapping ========================= -->
+
+    <!--
+    These are lists of Subject Canonicalization flows that turn complex Subject data into a string-based
+    principal name that the rest of the IdP can operate on. They're used primarily after authentication
+    and also during less common operations like SAML attribute queries, to map the SAML Subject into a
+    principal name.
+
+    Flows are identified with an ID that corresponds to a Spring Web Flow subflow name.
+
+    Most of the simple settings that configure these flows are in subject-c14n.properties.
+    -->
+
+    <!--
+    ====================================================================
+    Flows used after authentication to produce canonical principal name.
+    ====================================================================
+    -->
+    <util:list id="shibboleth.PostLoginSubjectCanonicalizationFlows">
+        <!--
+        This is an advanced post-login step that performs attribute resolution and then produces a username
+        from an attribute value. To enable universally, just uncomment, but if you want it to run under more
+        specific conditions, set an activationCondition property to a condition to apply.
+        -->
+        <bean id="c14n/attribute" parent="shibboleth.PostLoginSubjectCanonicalizationFlow" />
+    </util:list>
+
+    <!-- What SAML NameID formats do you want to support direct transformations for? -->
+    <util:list id="shibboleth.NameTransformFormats">
+        <value>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</value>
+        <value>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</value>
+        <value>urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName</value>
+        <value>urn:oasis:names:tc:SAML:1.1:nameid-format:WindowsDomainQualifiedName</value>
+        <value>urn:oasis:names:tc:SAML:2.0:nameid-format:kerberos</value>
+    </util:list>
+
+    <!--
+    Under what conditions should direct NameID mapping be allowed? By default, never.
+    Any condition can be used here; the example is suitable for enumerating a number of SPs to allow.
+    -->
+    <bean id="shibboleth.NameTransformPredicate" parent="shibboleth.Conditions.RelyingPartyId">
+        <constructor-arg name="candidates">
+            <list>
+                <!-- <value>https://sp.example.org</value> -->
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

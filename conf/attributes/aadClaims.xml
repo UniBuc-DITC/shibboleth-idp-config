@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+
+       default-init-method="initialize"
+       default-destroy-method="destroy">
+
+    <bean parent="shibboleth.TranscodingRuleLoader">
+    <constructor-arg>
+    <list>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureUpn</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">upn</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">User Principal Name</prop>
+                    <prop key="description.en">User principal name</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureObjectId</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">http://schemas.microsoft.com/identity/claims/objectidentifier</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">Object ID</prop>
+                    <prop key="description.en">Azure object ID</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureTenantId</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">http://schemas.microsoft.com/identity/claims/tenantid</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">Tenant ID</prop>
+                    <prop key="description.en">ID of home Azure tenant</prop>
+                </props>
+            </property>
+        </bean>
+    </list>
+    </constructor-arg>
+    </bean>
+</beans>

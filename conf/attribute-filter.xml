@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AttributeFilterPolicyGroup id="ShibbolethFilterPolicy"
+        xmlns="urn:mace:shibboleth:2.0:afp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:mace:shibboleth:2.0:afp http://shibboleth.net/schema/idp/shibboleth-afp.xsd">
+
+    <!-- Azure AD attribute filter -->
+    <AttributeFilterPolicy id="FilterPolicyObject-Proxy-FromAzure-byIssuer-Type">
+        <PolicyRequirementRule xsi:type="Issuer" value="https://sts.windows.net/08a1a72f-fecd-4dae-8cec-471a2fb7c2f1/" />
+
+        <AttributeRule attributeID="azureUpn" permitAny="true" />
+        <AttributeRule attributeID="azureObjectId" permitAny="true" />
+        <AttributeRule attributeID="azureTenantId" permitAny="true"/>
+    </AttributeFilterPolicy>
+</AttributeFilterPolicyGroup>
