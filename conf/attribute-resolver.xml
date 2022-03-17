@@ -44,6 +44,7 @@
         <InputDataConnector ref="subjectAttributes" attributeNames="azureUpn" />
     </AttributeDefinition>
 
+    <!-- We currently determine a user's affiliation based on their institutional e-mail address. -->
     <AttributeDefinition id="eduPersonAffiliation" xsi:type="ScriptedAttribute">
         <InputDataConnector ref="subjectAttributes" attributeNames="azureUpn" />
         <Script><![CDATA[
