@@ -71,6 +71,16 @@
     -->
     <MetadataProvider
         id="RoEduNetIDTestServiceProviderMetadata"
-        xsi:type="FilesystemMetadataProvider"
-        metadataFile="%{idp.home}/metadata/roedunetid-sp-metadata.xml"/>
+        xsi:type="FileBackedHTTPMetadataProvider"
+        backingFile="%{idp.home}/metadata/roedunetid-sp-metadata.xml"
+        metadataURL="https://sp.roedu.net/simplesaml/module.php/saml/sp/metadata.php/default-sp"/>
+
+    <!--
+    ANELIS+ SP metadata
+    -->
+    <MetadataProvider
+        id="ANELISPlusServiceProviderMetadata"
+        xsi:type="FileBackedHTTPMetadataProvider"
+        backingFile="%{idp.home}/metadata/anelis-plus-sp-metadata.xml"
+        metadataURL="https://portal.anelisplus.ro/simplesaml/module.php/saml/sp/metadata.php/default-sp"/>
 </MetadataProvider>

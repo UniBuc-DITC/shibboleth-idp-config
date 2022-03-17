@@ -10,6 +10,54 @@
 
         <AttributeRule attributeID="azureUpn" permitAny="true" />
         <AttributeRule attributeID="azureObjectId" permitAny="true" />
-        <AttributeRule attributeID="azureTenantId" permitAny="true"/>
+        <AttributeRule attributeID="azureUserId" permitAny="true" />
+        <AttributeRule attributeID="azureUserType" permitAny="true" />
+        <AttributeRule attributeID="azureTenantId" permitAny="true" />
+        <AttributeRule attributeID="azureDisplayName" permitAny="true" />
+        <AttributeRule attributeID="azureGivenName" permitAny="true" />
+        <AttributeRule attributeID="azureSurname" permitAny="true" />
+        <AttributeRule attributeID="azureMail" permitAny="true" />
     </AttributeFilterPolicy>
+
+    <AttributeFilterPolicy id="Release-eduGAIN-Attributes">
+        <PolicyRequirementRule xsi:type="ANY" />
+
+        <AttributeRule attributeID="uid" permitAny="true"/>
+        <AttributeRule attributeID="cn" permitAny="true"/>
+        <AttributeRule attributeID="displayName" permitAny="true"/>
+        <AttributeRule attributeID="givenName" permitAny="true"/>
+        <AttributeRule attributeID="sn" permitAny="true"/>
+        <AttributeRule attributeID="mail" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonUniqueId" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonTargetedID" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonPrincipalName" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonAffiliation" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonScopedAffiliation" permitAny="true"/>
+        <AttributeRule attributeID="schacHomeOrganization" permitAny="true"/>
+        <AttributeRule attributeID="schacHomeOrganizationType" permitAny="true"/>
+    </AttributeFilterPolicy>
+
+
+    <!-- ANELIS+ attributes -->
+    <AttributeFilterPolicy id="ANELISPlusEntitlement">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="Requester"
+                value="https://portal.anelisplus.ro/simplesaml/module.php/saml/sp/metadata.php/default-sp" />
+            <Rule xsi:type="Requester"
+                value="https://dspace.anelisplus.ro/shibboleth" />
+        </PolicyRequirementRule>
+
+        <!--
+        <AttributeRule attributeID="givenName" permitAny="true" />
+        <AttributeRule attributeID="sn" permitAny="true" />
+        <AttributeRule attributeID="displayName" permitAny="true" />
+        <AttributeRule attributeID="mail" permitAny="true" />
+        -->
+        <!-- <AttributeRule attributeID="eduPersonEntitlement" permitAny="true" /> -->
+        <!--
+        <AttributeRule attributeID="homeOrganizationAbbr" permitAny="true" />
+        <AttributeRule attributeID="homeOrganizationType" permitAny="true" />
+        -->
+    </AttributeFilterPolicy>
+
 </AttributeFilterPolicyGroup>

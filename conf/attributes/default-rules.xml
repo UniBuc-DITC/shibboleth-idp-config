@@ -15,4 +15,8 @@
     <!-- Default Attribute transcoding rules. -->
     <import resource="aadClaims.xml" />
 
+    <import resource="inetOrgPerson.xml" />
+    <import resource="eduPerson.xml" />
+    <import resource="samlSubject.xml" />
+    <import resource="schac.xml" />
 </beans>

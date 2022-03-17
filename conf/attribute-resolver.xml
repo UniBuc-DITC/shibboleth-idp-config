@@ -5,16 +5,85 @@
         xsi:schemaLocation="urn:mace:shibboleth:2.0:resolver http://shibboleth.net/schema/idp/shibboleth-attribute-resolver.xsd">
 
     <!-- ========================================== -->
+    <!--      Attribute Definitions                 -->
+    <!-- ========================================== -->
+
+    <AttributeDefinition id="uid" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureObjectId" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="cn" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureDisplayName" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="displayName" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureDisplayName" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="givenName" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureGivenName" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="sn" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureSurname" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="mail" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureMail" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="eduPersonUniqueId" xsi:type="Scoped" scope="%{idp.scope}">
+        <InputAttributeDefinition ref="uid" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="eduPersonTargetedID" xsi:type="Simple">
+        <InputDataConnector ref="computedIDConnector" attributeNames="eduPersonTargetedID"/>
+    </AttributeDefinition>
+
+    <AttributeDefinition id="eduPersonPrincipalName" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureUpn" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="eduPersonAffiliation" xsi:type="ScriptedAttribute">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureUpn" />
+        <Script><![CDATA[
+            var email = azureUpn.getValues().get(0);
+            eduPersonAffiliation.addValue("member");
+
+            if (email.endsWith("@s.unibuc.ro")) {
+                eduPersonAffiliation.addValue("student");
+            } else if (email.endsWith("@unibuc.ro")) {
+                eduPersonAffiliation.addValue("faculty");
+            }
+        ]]></Script>
+    </AttributeDefinition>
+
+    <!-- TODO: should probably be scoped per-faculty -->
+    <AttributeDefinition id="eduPersonScopedAffiliation" xsi:type="Scoped" scope="%{idp.scope}">
+        <InputAttributeDefinition ref="eduPersonAffiliation" />
+    </AttributeDefinition>
+
+    <!-- ========================================== -->
     <!--      Data Connectors                       -->
     <!-- ========================================== -->
 
-    <DataConnector id="staticAttributes" xsi:type="Static">
-        <Attribute id="affiliation">
-            <Value>member</Value>
+    <DataConnector id="staticAttributes" xsi:type="Static"
+        exportAttributes="schacHomeOrganization schacHomeOrganizationType">
+        <Attribute id="schacHomeOrganization">
+            <Value>unibuc.ro</Value>
+        </Attribute>
+        <Attribute id="schacHomeOrganizationType">
+            <Value>urn:schac:homeOrganizationType:eu:higherEducationalInstitution</Value>
         </Attribute>
     </DataConnector>
 
-    <DataConnector id="passthroughAttributes" xsi:type="Subject"
-        exportAttributes="azureUpn" />
+    <DataConnector id="subjectAttributes" xsi:type="Subject" />
+
+    <DataConnector id="computedIDConnector" xsi:type="ComputedId"
+        generatedAttributeID="eduPersonTargetedID"
+        salt="%{idp.persistentId.salt}"
+        encoding="BASE32">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureObjectId" />
+    </DataConnector>
 
 </AttributeResolver>

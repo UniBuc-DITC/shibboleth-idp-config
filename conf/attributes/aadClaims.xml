@@ -42,12 +42,84 @@
         <bean parent="shibboleth.TranscodingProperties">
             <property name="properties">
                 <props merge="true">
+                    <prop key="id">azureUserId</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">http://schemas.microsoft.com/identity/claims/extn.UserId</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">Persistent User ID</prop>
+                    <prop key="description.en">Persistent user ID stored in an extension attribute</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureUserType</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">userType</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">User Type</prop>
+                    <prop key="description.en">Azure user type</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
                     <prop key="id">azureTenantId</prop>
                     <prop key="transcoder">SAML2StringTranscoder</prop>
                     <prop key="saml2.name">http://schemas.microsoft.com/identity/claims/tenantid</prop>
                     <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
                     <prop key="displayName.en">Tenant ID</prop>
                     <prop key="description.en">ID of home Azure tenant</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureDisplayName</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">displayName</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">Display name</prop>
+                    <prop key="description.en">User's display name</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureGivenName</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">givenName</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">Given name</prop>
+                    <prop key="description.en">User's given name</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureSurname</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">surname</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">Surname</prop>
+                    <prop key="description.en">User's surname</prop>
+                </props>
+            </property>
+        </bean>
+        <bean parent="shibboleth.TranscodingProperties">
+            <property name="properties">
+                <props merge="true">
+                    <prop key="id">azureMail</prop>
+                    <prop key="transcoder">SAML2StringTranscoder</prop>
+                    <prop key="saml2.name">mail</prop>
+                    <prop key="saml2.nameFormat">urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified</prop>
+                    <prop key="displayName.en">E-mail address</prop>
+                    <prop key="description.en">Primary SMTP address of user</prop>
                 </props>
             </property>
         </bean>
