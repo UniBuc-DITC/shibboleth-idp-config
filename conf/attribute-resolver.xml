@@ -63,6 +63,11 @@
         <InputAttributeDefinition ref="eduPersonAffiliation" />
     </AttributeDefinition>
 
+    <!-- We need to define the user type as an attribute to be able to filter by it in the context check intercept. -->
+    <AttributeDefinition id="azureUserType" xsi:type="Simple">
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureUserType" />
+    </AttributeDefinition>
+
     <!-- ========================================== -->
     <!--      Data Connectors                       -->
     <!-- ========================================== -->

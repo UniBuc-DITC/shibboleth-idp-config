@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+       default-init-method="initialize"
+       default-destroy-method="destroy">
+
+    <!-- Terms of Use configuration -->
+
+    <!--
+    Terms of use is driven by a lookup function returning a key into messages/consent-messages.properties
+    -->
+
+    <bean id="shibboleth.consent.terms-of-use.Key" parent="shibboleth.Functions.Constant">
+        <constructor-arg value="unibuc-terms"/>
+    </bean>
+
+    <!-- Attribute Release configuration -->
+
+    <!--
+    Attribute release control sets and match expressions to determine
+    whether consent should be obtained for an attribute based on the attribute ID.
+    -->
+    <!--
+    <util:set id="shibboleth.consent.attribute-release.PromptedAttributeIDs">
+        <value>eduPersonTargetedID</value>
+        <value>mail</value>
+    </util:set>
+    -->
+
+    <util:set id="shibboleth.consent.attribute-release.IgnoredAttributeIDs">
+        <value>samlPairwiseID</value>
+    </util:set>
+
+    <!--
+    Customize the order in which attributes are displayed.
+    Attribute IDs not present in this list will be sorted according to their
+    natural order and displayed subsequent to any attribute IDs specified here.
+    -->
+    <util:list id="shibboleth.consent.attribute-release.AttributeDisplayOrder">
+        <value>uid</value>
+        <value>eduPersonUniqueId</value>
+        <value>eduPersonTargetedID</value>
+        <value>cn</value>
+        <value>displayName</value>
+        <value>givenName</value>
+        <value>sn</value>
+        <value>mail</value>
+        <value>eduPersonPrincipalName</value>
+        <value>eduPersonAffiliation</value>
+        <value>eduPersonScopedAffiliation</value>
+        <value>schacHomeOrganization</value>
+        <value>schacHomeOrganizationType</value>
+    </util:list>
+
+    <!--
+    Specify custom symbolic replacements for attribute names to shrink the size of results saved to client-side storage
+    such as cookies.
+    -->
+    <bean id="shibboleth.consent.AttributeSymbolics" parent="shibboleth.consent.DefaultAttributeSymbolics" lazy-init="true">
+        <property name="sourceMap">
+            <map merge="true">
+                <!--
+                <entry key="myAttribute" value="900" />
+                -->
+            </map>
+        </property>
+    </bean>
+
+    <!--
+    Condition to evaluate to apply attribute-release consent to attribute queries.
+    -->
+    <bean id="shibboleth.consent.AttributeQuery.Condition" parent="shibboleth.Conditions.FALSE" />
+
+</beans>
