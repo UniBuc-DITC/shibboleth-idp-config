@@ -9,7 +9,7 @@
     <!-- ========================================== -->
 
     <AttributeDefinition id="uid" xsi:type="Simple">
-        <InputDataConnector ref="subjectAttributes" attributeNames="azureObjectId" />
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureUserId" />
     </AttributeDefinition>
 
     <AttributeDefinition id="cn" xsi:type="Simple">
@@ -98,7 +98,7 @@
         generatedAttributeID="eduPersonTargetedID"
         salt="%{idp.persistentId.salt}"
         encoding="BASE32">
-        <InputDataConnector ref="subjectAttributes" attributeNames="azureObjectId" />
+        <InputDataConnector ref="subjectAttributes" attributeNames="azureUserId" />
     </DataConnector>
 
 </AttributeResolver>
