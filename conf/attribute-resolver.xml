@@ -69,6 +69,15 @@
         <InputDataConnector ref="subjectAttributes" attributeNames="azureUserType" />
     </AttributeDefinition>
 
+    <!-- The European Student Identifier -->
+    <AttributeDefinition id="schacPersonalUniqueCode" xsi:type="Mapped">
+        <InputAttributeDefinition ref="uid" />
+        <ValueMap>
+            <ReturnValue>urn:schac:personalUniqueCode:int:esi:unibuc.ro:$1</ReturnValue>
+            <SourceValue>(.+)</SourceValue>
+        </ValueMap>
+    </AttributeDefinition>
+
     <!-- ========================================== -->
     <!--      Data Connectors                       -->
     <!-- ========================================== -->
