@@ -36,6 +36,7 @@
         <AttributeRule attributeID="eduPersonScopedAffiliation" permitAny="true"/>
         <AttributeRule attributeID="schacHomeOrganization" permitAny="true"/>
         <AttributeRule attributeID="schacHomeOrganizationType" permitAny="true"/>
+        <AttributeRule attributeID="schacPersonalUniqueCode" permitAny="true"/>
     </AttributeFilterPolicy>
 
 
