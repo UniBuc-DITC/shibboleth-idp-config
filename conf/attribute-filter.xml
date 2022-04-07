@@ -24,61 +24,27 @@
         <PolicyRequirementRule xsi:type="ANY" />
 
         <AttributeRule attributeID="uid" permitAny="true"/>
-        <AttributeRule attributeID="cn" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="displayName" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="givenName" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="sn" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="mail" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
+
+        <AttributeRule attributeID="cn" permitAny="true"/>
+        <AttributeRule attributeID="displayName" permitAny="true"/>
+        <AttributeRule attributeID="givenName" permitAny="true"/>
+        <AttributeRule attributeID="sn" permitAny="true"/>
+        <AttributeRule attributeID="mail" permitAny="true"/>
+
+        <AttributeRule attributeID="eduPersonAffiliation" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonScopedAffiliation" permitAny="true"/>
+
+        <AttributeRule attributeID="eduPersonUniqueId" permitAny="true"/>
+        <AttributeRule attributeID="eduPersonTargetedID" permitAny="true"/>
+
+        <AttributeRule attributeID="eduPersonPrincipalName" permitAny="true"/>
+
+        <AttributeRule attributeID="schacHomeOrganization" permitAny="true"/>
+        <AttributeRule attributeID="schacHomeOrganizationType" permitAny="true"/>
     </AttributeFilterPolicy>
 
-    <!-- Attribute filtering policy which releases all eduGAIN recommended attributes to trusted relying parties. -->
-    <AttributeFilterPolicy id="Release-eduGAIN-Attributes">
-        <!-- Only release attributes if... -->
-        <PolicyRequirementRule xsi:type="OR">
-            <!-- Entity is part of the Research and Scholarship network -->
-            <Rule xsi:type="EntityAttributeExactMatch"
-                attributeName="http://macedir.org/entity-category"
-                attributeValue="http://refeds.org/category/research-and-scholarship" />
-            <!-- Or adheres to the GÉANT Data Protection Code of Conduct -->
-            <Rule xsi:type="EntityAttributeExactMatch"
-                attributeName="http://macedir.org/entity-category"
-                attributeValue="http://www.geant.net/uri/dataprotection-code-of-conduct/v1" />
-        </PolicyRequirementRule>
-
-        <AttributeRule attributeID="eduPersonUniqueId" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="eduPersonTargetedID" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="eduPersonPrincipalName" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="eduPersonAffiliation" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="eduPersonScopedAffiliation" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true"/>
-        </AttributeRule>
-        <AttributeRule attributeID="schacHomeOrganization" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true" />
-        </AttributeRule>
-        <AttributeRule attributeID="schacHomeOrganizationType" permitAny="true">
-            <PermitValueRule xsi:type="AttributeInMetadata" onlyIfRequired="true" />
-        </AttributeRule>
-    </AttributeFilterPolicy>
-
-    <!-- ESI European Student Identifier -->
+    <!-- Release the European Student Identifier to entities
+        which declared that they support the processing of this attribute. -->
     <AttributeFilterPolicy id="Release-EuropeanStudentIdentifier-ForEsiEntityCategory">
         <PolicyRequirementRule xsi:type="EntityAttributeExactMatch"
                 attributeName="http://macedir.org/entity-category"
