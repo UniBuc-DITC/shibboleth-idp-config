@@ -46,9 +46,15 @@
     <!-- Release the European Student Identifier to entities
         which declared that they support the processing of this attribute. -->
     <AttributeFilterPolicy id="Release-EuropeanStudentIdentifier-ForEsiEntityCategory">
-        <PolicyRequirementRule xsi:type="EntityAttributeExactMatch"
-                attributeName="http://macedir.org/entity-category"
-                attributeValue="https://myacademicid.org/entity-categories/esi" />
+        <PolicyRequirementRule xsi:type="AND" >
+            <!-- The service provider declared support for ESI processing... -->
+            <Rule xsi:type="EntityAttributeExactMatch"
+                    attributeName="http://macedir.org/entity-category"
+                    attributeValue="https://myacademicid.org/entity-categories/esi" />
+            <!-- ...and the user is a student. -->
+            <Rule xsi:type="Value" attributeID="eduPersonAffiliation" value="student" />
+        </PolicyRequirementRule>
+
         <AttributeRule attributeID="schacPersonalUniqueCode">
             <PermitValueRule xsi:type="ValueRegex" regex="^urn:schac:personalUniqueCode:int:esi:.*" />
         </AttributeRule>
