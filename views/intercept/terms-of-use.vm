@@ -38,6 +38,12 @@
                 #springMessageText("${termsOfUseId}.text", "Terms of Use Text...")
             </p>
             <p>
+                #springMessageText("${termsOfUseId}.linkLabel", "Terms of use document:")
+                <a href="#springMessageText("${termsOfUseId}.link", "#")" target="_blank" rel="noopener noreferer">
+                    #springMessageText("${termsOfUseId}.link", "")
+                </a>
+            </p>
+            <p>
                 #springMessageText("${termsOfUseId}.service-name", "Service name:")
                 <span class="service_name">$serviceName</span>
             </p>
