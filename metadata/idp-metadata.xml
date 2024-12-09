@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntityDescriptor
+    xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+    xmlns:shibmd="urn:mace:shibboleth:metadata:1.0"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui"
+    xmlns:req-attr="urn:oasis:names:tc:SAML:protocol:ext:req-attr"
+    xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi"
+    xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute"
+    validUntil="2025-01-01T12:00:00.000Z"
+    entityID="https://idp.unibuc.ro/idp/shibboleth">
+
+    <Organization>
+        <OrganizationName xml:lang="en">University of Bucharest</OrganizationName>
+        <OrganizationDisplayName xml:lang="en">University of Bucharest</OrganizationDisplayName>
+        <OrganizationURL xml:lang="en">https://unibuc.ro/?lang=en</OrganizationURL>
+
+        <OrganizationName xml:lang="ro">Universitatea din București</OrganizationName>
+        <OrganizationDisplayName xml:lang="ro">Universitatea din București</OrganizationDisplayName>
+        <OrganizationURL xml:lang="ro">https://unibuc.ro/</OrganizationURL>
+    </Organization>
+
+    <ContactPerson contactType="technical">
+        <SurName>University of Bucharest IT&amp;C Direction</SurName>
+        <EmailAddress>mailto:contact@it.unibuc.ro</EmailAddress>
+    </ContactPerson>
+
+    <Extensions>
+        <mdrpi:RegistrationInfo registrationAuthority="https://eduid.roedu.net">
+            <mdrpi:RegistrationPolicy xml:lang="en">https://eduid.roedu.net/wp-content/uploads/2019/03/RoEduNet-Metadata_Registration-v0.7.pdf</mdrpi:RegistrationPolicy>
+        </mdrpi:RegistrationInfo>
+        <mdattr:EntityAttributes>
+            <saml:Attribute Name="http://macedir.org/entity-category-support" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+                <saml:AttributeValue>http://refeds.org/category/research-and-scholarship</saml:AttributeValue>
+            </saml:Attribute>
+        </mdattr:EntityAttributes>
+    </Extensions>
+
+    <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <Extensions>
+            <shibmd:Scope regexp="true">^(.*\.)?unibuc\.ro$</shibmd:Scope>
+
+            <mdui:UIInfo>
+                <mdui:DisplayName xml:lang="en">University of Bucharest - Shibboleth IdP</mdui:DisplayName>
+                <mdui:Description xml:lang="en">Shibboleth Identity Provider for the University of Bucharest</mdui:Description>
+                <mdui:Logo width="240" height="68" xml:lang="en">https://idp.unibuc.ro/logos/ub-en.png</mdui:Logo>
+
+                <mdui:DisplayName xml:lang="ro">Universitatea din București - Shibboleth IdP</mdui:DisplayName>
+                <mdui:Description xml:lang="ro">Shibboleth Identity Provider pentru Universitatea din București</mdui:Description>
+                <mdui:Logo width="240" height="82" xml:lang="ro">https://idp.unibuc.ro/logos/ub-ro.png</mdui:Logo>
+            </mdui:UIInfo>
+        </Extensions>
+
+        <!-- First signing certificate is BackChannel, the second one is FrontChannel-->
+        <KeyDescriptor use="signing">
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>
+MIIEHzCCAoegAwIBAgIUDmTxnEP/pbxqoEbiDcLKDCunwx4wDQYJKoZIhvcNAQEL
+BQAwGDEWMBQGA1UEAwwNaWRwLnVuaWJ1Yy5ybzAeFw0yMjAyMjExMTU4NTlaFw00
+MjAyMjExMTU4NTlaMBgxFjAUBgNVBAMMDWlkcC51bmlidWMucm8wggGiMA0GCSqG
+SIb3DQEBAQUAA4IBjwAwggGKAoIBgQCZ0uR/bQR4nKnkWieiK6kCFk7Xagp9zdk3
+fgKXUxIjRqkqkQluo6AGjLVrifDygwSwFpQvhE8T5AVOg/AEJnZE3i4ptmkSIamB
+OQw5GpyzFHbmORXzCCeNg56rsTcLPfLSb+mFiqFjbKA8oFWKkVfg4bcbhVh0HA/E
++rFryES5uKVGjvdOkHVbFMVfwm9RXrDVxXwQ8+voRC0V6dY2DShEE5dbdZHPN45x
+X7Ptuej94X87/o/R2yfuMK/mlM+SKSRWf9rMdBGTMqhdyh8t0McpBM78pBcED2JK
+29JFxdt9hCf+DkxnuGDH2rGNLmg52J0L5SXcsL9hBWG9jy2paD5246RSOJs7kJFE
+OvaMSJrUsRJfOe/ExBK23kS6g9n69M9EukVFIbzg+ixjNOz+R+0rVkgzP6h7nAx2
+jMLomZ9Np4gq0MiMn/XLC7cZ9qFLjOajvKuBCaDlhw+CzYsbxxuk5a3Yswv/qg9i
+8CqQYZyZa47IXHn1Ch3PenGgBuQ23q8CAwEAAaNhMF8wHQYDVR0OBBYEFHalI30l
+6fKzwDME/Ktm/Sjnxc4DMD4GA1UdEQQ3MDWCDWlkcC51bmlidWMucm+GJGh0dHBz
+Oi8vaWRwLnVuaWJ1Yy5yby9pZHAvc2hpYmJvbGV0aDANBgkqhkiG9w0BAQsFAAOC
+AYEAibWeB0/1wexItkW7wrEg/dgYHlNGlbNIo3L941OgR9mrOmJbfQ0m/HuMjwK8
+r59gSDL6DFG2GQ2MXZYaleTfAfZw1lUTwSVlacShXDpYnvCsa5MK84hH+s5DEhNs
+x36n/TrEQetSwIZUqHEtEASEv95hWCngDRP7VCaC4LuBLW2HA+KcPccG9D7KwjVj
+uHAD4rW5Cm+JH20JlSOtK8XLOYoAuymOcU+yaOdviXR4aC0M71u5YzZbt0IoKayP
+y9xURjc0/4Xw34wNqMqYk3L8LHzbXhInvt2+lXrl30RgEySKxB8WZRF2yJABM5ky
+f6H8QrBNiwn9Mw452j5s8Y1U2tiQVRNYbrxUR0KvThGFHLt94Tef+I2sO8Vtnmgk
+2DoT++fmecIiQDwug24AVwDqPGecq5Ljww8SOn19EybVAcddiUaP0MlkGMdJFXPE
+iAVzmPxHj2/oUm1UOWN3+DkejqRevE071NS8l/BFfYTrDsbbSMjscnjxNiLHKELf
+fcsS
+</ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+
+        </KeyDescriptor>
+        <KeyDescriptor use="signing">
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>
+MIIEIDCCAoigAwIBAgIVAJO5V8hT/KTzeN0X8OL5YlWJWUX0MA0GCSqGSIb3DQEB
+CwUAMBgxFjAUBgNVBAMMDWlkcC51bmlidWMucm8wHhcNMjIwMjIxMTE1ODAwWhcN
+NDIwMjIxMTE1ODAwWjAYMRYwFAYDVQQDDA1pZHAudW5pYnVjLnJvMIIBojANBgkq
+hkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvPaJzcCOFbMBdEsib3SuK/2yqMY34P/U
+S+7NRZnFlnz7ffh9T+poJaQTHy2/GHJXgAYUdFCmfImZnqbLuhwnr7a16AWrD0OM
+FosSHc3Nh4woAwB+zIx9uRHIK4WQ6VYep00zGqYmlJ8rBD2UohOHWPkizaz2QG4X
+bge9RN4NgeJElGuKX2dnFETj22L2uYeE0Yg6ade9R3HJ6iB17oL9S1JNUa0Ek3nw
+rqNBy/BJKf/0M8bZa7dxrwPgkOpQ1yIRYOmV+0vzEIZILNVU5um51L5xPDr9fTwa
+ADAPYmrWvVCTJv3572bEuHHvXSdDTZ4ZXTklADTYuXifWGgt6hF+fIsYI4zWMHrr
+GYKBFIVreeZoGrpHDykpSzOi5U1Z23lBwNpbEEHR7fz1gUxFES8xCR8w2MMt31Fz
+ViW6oJEhYpn6taIE+yNEJipNHZ6MCzSVuPJY8eY+jPM/87mRc5Qd1UFjaG66F0wN
+yxOToyZ4UQ1Mr/2jB3vSQwXPMOdJuL9rAgMBAAGjYTBfMB0GA1UdDgQWBBRGkI8p
+ezPT8AI2kb4KSySRv1RHizA+BgNVHREENzA1gg1pZHAudW5pYnVjLnJvhiRodHRw
+czovL2lkcC51bmlidWMucm8vaWRwL3NoaWJib2xldGgwDQYJKoZIhvcNAQELBQAD
+ggGBAITHHSHOitwzyTsy3vAmdb1qLUUYJDaCyKxwm3whqSMXUWBYkJkm88COGBRT
+g8Zg9BTJQUNXT7MUruRN8TsmwDRbX5sYaKpT2JXWZOzkWIb7fkgKXpvbxXbXluYq
+FZwXEa9Um2hDSv/O+ftN7fimCArfRyW32XuLNqkug9kkr8sZDPx6botHoUq4FlaS
+7JwFquFLceWjO/ipe4v/WoUlVnwD+752oe0/Wevxpk+zMyKxGyuzgvat1+atWZZt
+1eAhN/DA6IzIS05mnDVjDWfZQyr5Hv1RCf9H/ZtfbIA8HSeobWQHN9TFq8NoqYPb
+9ybBdHvL3/7bCE562mWBuAxCT21WKByRYCezIk/qO8MIOMcFXEWCqiDhmB/IlLWO
+BJX9N9UA0VyGjoNy+E3/8xgorFihtnloT7MkXRNBVuwtiqMDqgU5Ug8ViBSha0TR
+W0cqpxsZShFDOwV9wVqDXf/P9YAYAbpV5MzQim19Wm6k3Hsq5AUcrj4xKUbbjRwc
+lrmeKg==
+</ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+
+        </KeyDescriptor>
+        <KeyDescriptor use="encryption">
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>
+MIIEIDCCAoigAwIBAgIVAP9I8u/GnIvb2sHQqRNQqXyXRSNRMA0GCSqGSIb3DQEB
+CwUAMBgxFjAUBgNVBAMMDWlkcC51bmlidWMucm8wHhcNMjIwMjIxMTE1ODAxWhcN
+NDIwMjIxMTE1ODAxWjAYMRYwFAYDVQQDDA1pZHAudW5pYnVjLnJvMIIBojANBgkq
+hkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAoQq9N31qwMpahBC/Wh4h87y5GFju/RuA
+NreJcEsCohBagSZE6IRcKWPbmiKlBlkwgooXzYhONSEav9t/JqFvVYJjm5I/fUXr
+Vuhul6E+HujYWnqkPiRArkCajQDXew+kkvzt30BhqEBREA7UpUs7Zk/qJxYeBHAQ
+2uyveZl+tBxONuKQA3c4ebT3wxd/dK7QS+DayXKER973dJMR8eCdpA7a+ZUoWjZU
+ni1kan9tmVS97S2jHbUhRN/y8NM6d0qNLYPhngZ3MP4qklvyjpVSYi0+fBGrhMg0
+GOZUt78mNLoFMfNHl3uosgVTqSujNLueQZgFSNpYhGWVMluzoVBxCMXPM/BWXQ3P
+VHlGMTsXytKkJUnCHeiDHo3Yf3JNnYR3ZFHIceJDz8cAJjvkkyu4qDfEU1wqph2+
+NSUrvMlPa2HpSH5IKpmJa9OKVcqzloBlTHR4rcIFoVxheAE6jRwcorMbnTOBtuI1
+NVdnYQrryKkv3ROcMaSCivvb6P7j4V4DAgMBAAGjYTBfMB0GA1UdDgQWBBSsNGvM
+Cv7y25jwesdyiTnA9mLH4jA+BgNVHREENzA1gg1pZHAudW5pYnVjLnJvhiRodHRw
+czovL2lkcC51bmlidWMucm8vaWRwL3NoaWJib2xldGgwDQYJKoZIhvcNAQELBQAD
+ggGBAFKxHX8KJ4TEyEZ/iirIrdnyoPKYnFCvX/EDw0r6viVvEM+t1+yn5aJBl6xV
+n7cbkb4tGbXW4GIvHKZpBvNnpeCbZdvuvaZAG5OXbnK9MD4LMkfrCc2GT7IS68qS
+yqKGNRtf/eJUsMh4OVRD/MysiLB1WYaBLt7saS23NDirhCwaHWhyavF2Jx4I0a1j
+X0CCVRb+Y1A3jpgCEMIz9zE5JvxCxrRc+SSIbnrPytFREIhXF+K93tgthO8esiCH
+oBFOCox8f9p1k9gsA0LrikBG82qpuavTHxY5GDgbmF1RLt256vQzKfWYdidFZRx5
+3tLNe3j0MkCQ1wE31d84Mez8hBIBkZyi98l/CAZTGBzd3bvTPzj8Wu1HdgGrsUFB
+0MJUTmcrcbEJSjuQr34HwZ0vDQ5+1fmUfR1EZUQjgwT2oG2/H0geBnF3sQ1AhkOW
+flS3oXE8TXb3R5R3ADKQL2FKQRF+LJ44JVAFgxDjftBHgM9oDXj6yUSfmXj948Sq
+msO9lw==
+</ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+
+        </KeyDescriptor>
+
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" req-attr:supportsRequestedAttributes="true" Location="https://idp.unibuc.ro/idp/profile/SAML2/POST-SimpleSign/SSO" />
+        <SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest" Location="https://idp.unibuc.ro/idp/profile/Shibboleth/SSO"/>
+
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" req-attr:supportsRequestedAttributes="true" Location="https://idp.unibuc.ro/idp/profile/SAML2/POST/SSO" />
+
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" req-attr:supportsRequestedAttributes="true" Location="https://idp.unibuc.ro/idp/profile/SAML2/Redirect/SSO" />
+
+    </IDPSSODescriptor>
+</EntityDescriptor>
