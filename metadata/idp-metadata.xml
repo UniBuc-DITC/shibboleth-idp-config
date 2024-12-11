@@ -9,7 +9,7 @@
     xmlns:req-attr="urn:oasis:names:tc:SAML:protocol:ext:req-attr"
     xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi"
     xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute"
-    validUntil="2025-01-01T12:00:00.000Z"
+    validUntil="2027-11-12T12:00:00.000Z"
     entityID="https://idp.unibuc.ro/idp/shibboleth">
 
     <Organization>

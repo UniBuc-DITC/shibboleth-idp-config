@@ -14,12 +14,12 @@
 
     <!-- Use this file to define any custom beans needed globally. -->
 
-    <!-- Support for JPA-based storage service -->
-    <bean id="shibboleth.JPAStorageService"
-        class="org.opensaml.storage.impl.JPAStorageService"
+    <!-- Support for JDBC-based storage service -->
+    <bean id="shibboleth.StorageService"
+        parent="shibboleth.JDBCStorageService"
         p:cleanupInterval="%{idp.storage.cleanupInterval:PT10M}"
-        c:factory-ref="shibboleth.JPAStorageService.EntityManagerFactory" />
-
+        p:dataSource-ref="shibboleth.StorageService.DataSource" />
+<!-- 
     <bean id="shibboleth.JPAStorageService.EntityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="storageservice" />
@@ -29,15 +29,15 @@
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
         </property>
-    </bean>
+    </bean> -->
 
     <!-- PostgreSQL configuration -->
-    <bean id="shibboleth.JPAStorageService.JPAVendorAdapter"
+    <!-- <bean id="shibboleth.JPAStorageService.JPAVendorAdapter"
         class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="database" value="POSTGRESQL" />
-    </bean>
+    </bean> -->
 
-    <bean id="shibboleth.JPAStorageService.DataSource"
+    <bean id="shibboleth.StorageService.DataSource"
         class="com.zaxxer.hikari.HikariDataSource" destroy-method="close" lazy-init="true"
         p:driverClassName="org.postgresql.Driver"
         p:jdbcUrl="jdbc:postgresql://localhost:5432/shibboleth" />
