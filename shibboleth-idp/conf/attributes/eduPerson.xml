@@ -153,6 +153,7 @@
                     <prop key="transcoder">SAML2StringTranscoder</prop>
                     <prop key="saml2.name">urn:oid:1.3.6.1.4.1.5923.1.1.1.6</prop>
                     <prop key="displayName.en">User principal name</prop>
+                    <prop key="displayName.ro">Nume principal utilizator</prop>
                 </props>
             </property>
         </bean>
