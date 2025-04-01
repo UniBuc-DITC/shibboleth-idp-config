@@ -43,12 +43,12 @@
             <shibmd:Scope regexp="true">^(.*\.)?unibuc\.ro$</shibmd:Scope>
 
             <mdui:UIInfo>
-                <mdui:DisplayName xml:lang="en">University of Bucharest - Shibboleth IdP</mdui:DisplayName>
-                <mdui:Description xml:lang="en">Shibboleth Identity Provider for the University of Bucharest</mdui:Description>
+                <mdui:DisplayName xml:lang="en">University of Bucharest</mdui:DisplayName>
+                <mdui:Description xml:lang="en">Identity Provider for the University of Bucharest</mdui:Description>
                 <mdui:Logo width="240" height="68" xml:lang="en">https://idp.unibuc.ro/logos/ub-en.png</mdui:Logo>
 
-                <mdui:DisplayName xml:lang="ro">Universitatea din București - Shibboleth IdP</mdui:DisplayName>
-                <mdui:Description xml:lang="ro">Shibboleth Identity Provider pentru Universitatea din București</mdui:Description>
+                <mdui:DisplayName xml:lang="ro">Universitatea din București</mdui:DisplayName>
+                <mdui:Description xml:lang="ro">Furnizor de identitate digitală pentru Universitatea din București</mdui:Description>
                 <mdui:Logo width="240" height="82" xml:lang="ro">https://idp.unibuc.ro/logos/ub-ro.png</mdui:Logo>
             </mdui:UIInfo>
         </Extensions>
