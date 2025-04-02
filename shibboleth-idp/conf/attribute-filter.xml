@@ -24,6 +24,8 @@
         <PolicyRequirementRule xsi:type="ANY" />
 
         <AttributeRule attributeID="uid" permitAny="true"/>
+        <AttributeRule attributeID="samlSubjectID" permitAny="true"/>
+        <AttributeRule attributeID="samlPairwiseID" permitAny="true"/>
 
         <AttributeRule attributeID="cn" permitAny="true"/>
         <AttributeRule attributeID="displayName" permitAny="true"/>
