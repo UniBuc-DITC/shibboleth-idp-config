@@ -40,7 +40,8 @@
 
     <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
         <Extensions>
-            <shibmd:Scope regexp="true">^(.*\.)?unibuc\.ro$</shibmd:Scope>
+            <shibmd:Scope regexp="false">unibuc.ro</shibmd:Scope>
+            <shibmd:Scope regexp="false">s.unibuc.ro</shibmd:Scope>
 
             <mdui:UIInfo>
                 <mdui:DisplayName xml:lang="en">University of Bucharest</mdui:DisplayName>
