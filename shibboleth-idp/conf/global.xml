@@ -19,7 +19,7 @@
         parent="shibboleth.JDBCStorageService"
         p:cleanupInterval="%{idp.storage.cleanupInterval:PT10M}"
         p:dataSource-ref="shibboleth.StorageService.DataSource" />
-<!-- 
+<!--
     <bean id="shibboleth.JPAStorageService.EntityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="storageservice" />
@@ -69,6 +69,9 @@
 
     The example below defines the bean as a map, which allows you to inject multiple objects under
     named keys to expand the feature to support multiple injected objects.
+
+    You MUST NOT change the bean(s) referenced in this way, they should be treated as read-only from
+    within views.
     -->
 
     <!--
