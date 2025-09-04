@@ -4,6 +4,7 @@
     <File>${idp.home}/logs/jetty.log</File>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <FileNamePattern>${idp.home}/logs/jetty-%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+      <maxHistory>90</maxHistory>
     </rollingPolicy>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
       <charset>UTF-8</charset>
@@ -15,6 +16,7 @@
     <file>${idp.home}/logs/access.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${idp.home}/logs/access-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+      <maxHistory>90</maxHistory>
     </rollingPolicy>
     <encoder>
       <pattern>%msg%n</pattern>
